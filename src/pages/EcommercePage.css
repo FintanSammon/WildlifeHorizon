@@ -1,0 +1,42 @@
+﻿.ecommerce-container {
+    padding: 20px;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.product {
+    width: calc(25% - 20px); /* 4 products in each row */
+    border: 1px solid #eee;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.active-product .product-details {
+    display: flex;
+}
