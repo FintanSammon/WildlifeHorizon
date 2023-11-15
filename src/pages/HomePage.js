@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 import logo from './images/logo.png';
 import zebraImage from './images/zebra.jpeg';
 
 function HomePage() {
+    
+    useEffect(() => {
+    if (!document.querySelector('script[src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"]')) {
+        const dfMessengerScript = document.createElement("script");
+        dfMessengerScript.src = "https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1";
+        document.body.appendChild(dfMessengerScript);
+    }
+    
+    if (!document.getElementById("df-messenger-container").querySelector("df-messenger")) {
+        const dfMessengerTag = document.createElement("df-messenger");
+        dfMessengerTag.setAttribute("intent", "WELCOME");
+        dfMessengerTag.setAttribute("chat-title", "WildlifeHorizon");
+        dfMessengerTag.setAttribute("agent-id", "aa984177-0dc1-4de7-aa93-977e430dfe44");
+        dfMessengerTag.setAttribute("language-code", "en");
+        document.getElementById("df-messenger-container").appendChild(dfMessengerTag);
+    }
+}, []);
+
+
+
     return (
+    
+    
         <div className="home-container">
             <div className="logo-container">
                 <img src={logo} alt="Wild Horizon Safari Logo" className="home-logo" />
@@ -50,9 +72,12 @@ function HomePage() {
                         <Link to="/game" className="home-button">Dive into the Game</Link>
                         <Link to="/shop" className="home-button">Support & Shop</Link>
                     </div>
+                    
+                   		 <div id="df-messenger-container"></div>
+       				 </div>
                 </div>
             </div>
-        </div>
+        
     );
 }
 

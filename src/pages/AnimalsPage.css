@@ -1,36 +1,76 @@
 .animals-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
     padding: 20px;
+    background-color: 555657;
+    color: white;
 }
 
 .animal-card {
+    display: flex;
+    gap: 20px;
+    border: 1px solid #555657;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    color: black;
+}
+
+.animal-card:nth-child(odd) .animal-image {
+    order: 2; /* places the image on the right for odd-numbered animal cards */
+}
+
+.animal-image img {
+    width: 50vw;
+    height: auto;
+    border-right: 1px solid #555657;
+}
+
+.animal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.animal-card h3 {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    font-size: 2rem;
+    color: yellow;
+}
+
+.animal-card p {
+    padding: 10px;
+    margin: 0;
+    font-size: 1.7rem;
+    color: white;
+}
+
+/* ... rest of your styles remain unchanged ... */
+
+
+.animal-card {
+    display: flex;
+    gap: 20px;
     border: 1px solid #555657;
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
 }
 
-.animal-card img {
-    width: 100%;
+.animal-card:nth-child(odd) .animal-image {
+    order: 2; /* places the image on the right for odd-numbered animal cards */
+}
+
+.animal-image img {
+    width: 50vw;
     height: auto;
+    border-right: 1px solid #555657;
 }
 
-.animal-card h3 {
-    text-align: center;
-    background-color: #F6DF5B;
-    color: #555657;
-    margin: 0;
-    padding: 10px;
-}
-
-.animal-card p {
-    padding: 10px;
-    background-color: #F8C650;
-    margin: 0;
-    font-size: 0.9rem;
-}
 
 .animal-modal {
     position: fixed;

@@ -1,55 +1,66 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+// ProductDetails.js
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig';
+import { useCart } from '../contexts/CartContext'; // Ensure the path to CartContext is correct
+import './ProductDetails.css';
 
 function ProductDetails() {
-    const [quantity, setQuantity] = useState(1);
-    const location = useLocation();
-    console.log('Location object:', location);  // <-- Added console log
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
+  const { addToCart } = useCart(); // Using the addToCart function from CartContext
+  const [quantity, setQuantity] = useState(1);
 
-    const product = location.state?.product;
+  useEffect(() => {
+    async function fetchProduct() {
+      const docRef = doc(db, 'products', productId);
+      const docSnap = await getDoc(docRef);
 
-    if (!product) {
-        return <div>Product details not available!</div>;
+      if (docSnap.exists()) {
+        setProduct({ id: docSnap.id, ...docSnap.data() });
+      } else {
+        console.log("No such product!");
+      }
     }
 
-    return (
-        <div>
-            {/* Product Image */}
-            <div>
-                <button>{"<"}</button>
-                <img src={product.image} alt={product.name} style={{ width: '300px', height: '300px' }} />
-                <button>{">"}</button>
-            </div>
+    fetchProduct();
+  }, [productId]);
 
-            {/* Product Name */}
-            <h1>{product.name}</h1>
-            
-            {/* Product Price */}
-            <h2>{product.price}</h2>
+  const handleAddToCart = () => {
+    addToCart(product, quantity); // Use the addToCart from CartContext
+    console.log('Product added to cart');
+  };
 
-            {/* Product Description */}
-            <p>{product.description}</p>
+  if (!product) {
+    return <div className="product-details-loading">Loading...</div>;
+  }
 
-            {/* Size Selector */}
-            <div>
-                Size *
-                <select>
-                    {/* Populate this dropdown with sizes */}
-                    <option value="S">S</option>
-                    {/* Add other sizes */}
-                </select>
-            </div>
-            
-            {/* Quantity Selector */}
-            <div>
-                Quantity: 
-                <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-            </div>
-            
-            {/* Add to Cart Button */}
-            <button onClick={() => {/* Add to cart logic here */}}>Add to Cart</button>
+  return (
+    <div className="product-details-container">
+      <div className="product-details-card">
+        <div className="product-details-image-container">
+          <img src={product.image} alt={product.name} className="product-image" />
         </div>
-    );
+        <div className="product-details-info">
+          <h1 className="product-title">{product.name}</h1>
+          <p className="product-price">Price: {product.price}</p>
+          <p className="product-description">{product.description}</p>
+          <div className="product-quantity">
+            Quantity:
+            <input
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              min={1}
+              className="quantity-input"
+            />
+          </div>
+          <button onClick={handleAddToCart} className="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ProductDetails;
