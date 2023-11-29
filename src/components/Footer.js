@@ -1,7 +1,5 @@
-// components/Footer.js
-
 import React from 'react';
-import './Footer.css'; // Link to the CSS file for styling
+import './Footer.css'; 
 
 function Footer() {
   return (
@@ -17,7 +15,6 @@ function Footer() {
         </ul>
       </div>
       <div className="footer-social-media">
-        {/* Add social media icons with links here */}
       </div>
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Wildlife Horizon. All rights reserved.</p>

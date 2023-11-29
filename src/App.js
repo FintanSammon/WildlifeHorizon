@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './contexts/CartContext'; // Import CartProvider from the correct path
+import { CartProvider } from './contexts/CartContext'; 
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import GamePage from './pages/GamePage';
@@ -9,7 +9,7 @@ import AnimalsPage from './pages/AnimalsPage';
 import ProductDetails from './components/ProductDetails';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
-import Footer from './components/Footer'; // Import the Footer component
+import Footer from './components/Footer'; 
 
 
 

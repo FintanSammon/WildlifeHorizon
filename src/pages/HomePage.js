@@ -37,7 +37,6 @@ function HomePage() {
 
     const fetchProducts = async () => {
       const querySnapshot = await getDocs(collection(db, "Products"));
-      // Assuming you want to display the first 3 products
       setProducts(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })).slice(0, 3));
     };
 
@@ -52,7 +51,7 @@ function HomePage() {
       {/* Hero Section */}
       <div 
         className="hero-image-container"
-        style={{ backgroundPositionY: offsetY * 0.5 }} // Parallax effect
+        style={{ backgroundPositionY: offsetY * 0.5 }} 
       >
         <div className="hero-text-container">
           <h1>Welcome to Wildlife Horizon</h1>
@@ -109,7 +108,7 @@ function HomePage() {
   <h2>Featured Products</h2>
   <div className="products-preview-container">
     {products.map((product) => (
-      <Link to={`/shop/${product.id}`} key={product.id}> {/* Change this to match the working URL */}
+      <Link to={`/shop/${product.id}`} key={product.id}> 
         <div className="product-preview">
           <img src={product.image} alt={product.name} className="product-preview-image"/>
           <h3 className="product-preview-name">{product.name}</h3>

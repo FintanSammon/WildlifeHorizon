@@ -1,75 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './AnimalsPage.css';
-import zebraImage from './images/zebra.jpeg';
+import foxImage from '../images/fox.jpeg'; 
+import rabbitImage from '../images/rabbitpic1.jpg';
+import rhinoImage from '../images/rhino.jpeg';
+import lionImage from '../images/lion.jpeg';
+
 
 const animalsData = [
     {
-        name: 'Zebra',
-        image: zebraImage,
-        fact: 'Zebras belong to the equine family, kin to horses and donkeys. Native to Africa, zebras are known for their distinct black and white striped patterns. Every zebra has a unique pattern of stripes, often compared to a human fingerprint. This striped pattern acts as a camouflage against predators. When zebras move together, their stripes can confuse lions and other predators, making it hard to focus on a single target. Zebras have a unique black and white striped coat. Each individual’s stripes are unique, much like human fingerprints. They live in small family groups consisting of a male (stallion), several females, and their young.',
-        details: 'Native to Africa, zebras are known for their distinct black and white striped patterns. Every zebra has a unique pattern of stripes, often compared to a human fingerprint. This striped pattern acts as a camouflage against predators. When zebras move together, their stripes can confuse lions and other predators, making it hard to focus on a single target.'
+        name: 'Rabbit',
+        image: rabbitImage,
+        fact: 'Rabbits have a complex social structure and can live in large colonies. A rabbits teeth never stop growing, which is why they need to constantly nibble on grasses and other vegetation.',
     },
     {
-        name: 'Zebra',
-        image: zebraImage,
-        fact: 'Zebras are part of the equine family, which includes horses and donkeys.',
-        details: 'Zebras have a unique black and white striped coat. Each individual’s stripes are unique, much like human fingerprints. They live in small family groups consisting of a male (stallion), several females, and their young.'
+        name: 'Fox',
+        image: foxImage,
+        fact: 'Foxes have a diverse diet and can eat both plant and animal foods. Foxes use the Earths magnetic field to hunt. They can see the magnetic field as a "ring of shadow" on their eyes that darkens as they head towards magnetic north.',
     },
-     {
-        name: 'Zebra',
-        image: zebraImage,
-        fact: 'Zebras are part of the equine family, which includes horses and donkeys.',
-        details: 'Zebras have a unique black and white striped coat. Each individual’s stripes are unique, much like human fingerprints. They live in small family groups consisting of a male (stallion), several females, and their young.'
+    {
+        name: 'Rhino',
+        image: rhinoImage,
+        fact: 'The rhino’s horn is made from keratin, the same type of protein that makes up hair and fingernails. Rhinos have poor eyesight, but their sense of smell and hearing are very well developed.',
     },
-     {
-        name: 'Zebra',
-        image: zebraImage,
-        fact: 'Zebras are part of the equine family, which includes horses and donkeys.',
-        details: 'Zebras have a unique black and white striped coat. Each individual’s stripes are unique, much like human fingerprints. They live in small family groups consisting of a male (stallion), several females, and their young.'
-    },
-     {
-        name: 'Zebra',
-        image: zebraImage,
-        fact: 'Zebras are part of the equine family, which includes horses and donkeys.',
-        details: 'Zebras have a unique black and white striped coat. Each individual’s stripes are unique, much like human fingerprints. They live in small family groups consisting of a male (stallion), several females, and their young.'
+    {
+        name: 'Lion',
+        image: lionImage,
+        fact: 'A lion’s roar can be heard from 5 miles away. Lions spend much of their time resting; they are inactive for about 20 hours per day.',
     },
 ];
 
+function ParallaxCard({ name, fact, image, index }) {
+    const cardTheme = index % 2 === 0 ? 'dark' : 'light';
+    return (
+        <div className={`parallax-card ${cardTheme}`} style={{ backgroundImage: `url(${image})` }}>
+            <div className="image-overlay"></div> 
+            <div className="parallax-content">
+                <h3>{name}</h3>
+                <p>{fact}</p>
+            </div>
+        </div>
+    );
+}
+
 function AnimalsPage() {
-    const [selectedAnimal, setSelectedAnimal] = useState(null);
-
-    const openModal = (animal) => {
-        setSelectedAnimal(animal);
-    };
-
-    const closeModal = () => {
-        setSelectedAnimal(null);
-    };
-
     return (
         <div className="animals-container">
-            {animalsData.map(animal => (
-    <div key={animal.name} className="animal-card" onClick={() => openModal(animal)}>
-        <div className="animal-image">
-            <img src={animal.image} alt={animal.name} />
-        </div>
-        <div className="animal-details">
-            <h3>{animal.name}</h3>
-            <p>{animal.fact}</p>
-        </div>
-    </div>
-))}
-
-            {selectedAnimal && (
-                <div className="animal-modal">
-                    <div className="modal-content">
-                        <span className="close-button" onClick={closeModal}>&times;</span>
-                        <img src={selectedAnimal.image} alt={selectedAnimal.name} />
-                        <h3>{selectedAnimal.name}</h3>
-                        <p>{selectedAnimal.details}</p>
-                    </div>
-                </div>
-            )}
+            {animalsData.map((animal, index) => (
+                <ParallaxCard key={index} name={animal.name} fact={animal.fact} image={animal.image} />
+            ))}
         </div>
     );
 }

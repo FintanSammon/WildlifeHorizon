@@ -5,7 +5,7 @@
   color: white;
   padding: 40px 0;
   text-align: center;
-  border-top: 5px solid #4CAF50; /* Adds a splash of color */
+  border-top: 5px solid #4CAF50; 
 }
 
 .footer-content {
@@ -42,12 +42,10 @@
 }
 
 .footer-links a:hover {
-  color: #4CAF50; /* Adds interaction to links */
+  color: #4CAF50; 
 }
 
-.footer-social-media {
-  /* Add styles for social media icons */
-}
+
 
 .footer-bottom {
   font-size: 0.8rem;

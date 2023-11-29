@@ -4,7 +4,7 @@ import { collection, getDocs, query as firestoreQuery, where } from "firebase/fi
 import { db } from '../firebase/firebaseConfig'; 
 import './EcommercePage.css';
 
-// Helper function to parse query parameters
+
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
@@ -24,7 +24,6 @@ function EcommercePage() {
                 if (filter === 'all') {
                     q = collection(db, "Products");
                 } else {
-                    // Note the alias 'firestoreQuery' is used here
                     q = firestoreQuery(collection(db, "Products"), where("category", "==", filter));
                 }
 
@@ -38,7 +37,7 @@ function EcommercePage() {
         }
 
         getProducts();
-    }, [filter, location]); // React to changes in filter and location
+    }, [filter, location]); 
 
     return (
         <div className="ecommerce-container">

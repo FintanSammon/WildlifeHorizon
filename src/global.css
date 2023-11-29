@@ -17,3 +17,11 @@ a {
 a:hover {
     color: #FD914B;
 }
+
+.full-height-container {
+    min-height: 100vh; /* Use 100% of the viewport height */
+    display: flex;
+    flex-direction: column;
+  }
+
+  

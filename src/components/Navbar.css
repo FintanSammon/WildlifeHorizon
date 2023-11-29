@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem; 
   background-color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .left-section,
 .navbar .right-section {
-  width: 15%; 
+  flex: 0 1 auto; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,13 +26,14 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem; 
+  flex-wrap: wrap; 
 }
 
 .navbar .nav-links a {
   text-decoration: none;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem; 
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
@@ -44,39 +45,51 @@
 .navbar .right-section {
   display: flex;
   justify-content: flex-end;
-
 }
 
 .navbar .right-section .cart-icon {
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
   color: #fff;
-  
-}
-
-
-.navbar .right-section .cart-icon svg {
-  width: 1.5em; 
-  height: 1.5em; 
 }
 
 .cart-icon {
   position: relative;
-  font-size: 1.5rem; 
+  font-size: 1.5rem;
 }
 
 .cart-count {
   position: absolute;
-  top: 3px; 
-  right: 3px; 
+  top: -5px; 
+  right: -5px;
   background-color: red;
   color: white;
   border-radius: 50%;
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  padding: 1px; 
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+
+  .navbar .nav-links {
+    justify-content: flex-start;
+    gap: 0.5rem; 
+  }
+
+  .navbar .nav-links a {
+    padding: 0.5rem; 
+  }
+
+  .navbar .right-section {
+    justify-content: center;
+    margin-top: 0.5rem; 
+  }
+}
