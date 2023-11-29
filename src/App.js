@@ -8,11 +8,14 @@ import EcommercePage from './pages/EcommercePage';
 import AnimalsPage from './pages/AnimalsPage';
 import ProductDetails from './components/ProductDetails';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import Footer from './components/Footer'; // Import the Footer component
+
 
 
 function App() {
   return (
-    <CartProvider> {/* Wrap your application with CartProvider */}
+    <CartProvider> 
       <Router>
         <Navbar />
         <Routes>
@@ -22,8 +25,11 @@ function App() {
           <Route path="/shop/:productId" element={<ProductDetails />} />
           <Route path="/animals" element={<AnimalsPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+
 
         </Routes>
+        <Footer />
       </Router>
     </CartProvider>
   );

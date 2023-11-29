@@ -18,7 +18,7 @@
 }
 
 .animal-card:nth-child(odd) .animal-image {
-    order: 2; /* places the image on the right for odd-numbered animal cards */
+    order: 2; 
 }
 
 .animal-image img {
@@ -49,7 +49,6 @@
     color: white;
 }
 
-/* ... rest of your styles remain unchanged ... */
 
 
 .animal-card {
@@ -62,7 +61,7 @@
 }
 
 .animal-card:nth-child(odd) .animal-image {
-    order: 2; /* places the image on the right for odd-numbered animal cards */
+    order: 2; 
 }
 
 .animal-image img {

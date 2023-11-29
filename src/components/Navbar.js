@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../contexts/CartContext'; 
 import './Navbar.css';
 
 function Navbar() {
+  const { cartItemCount } = useCart(); 
+
   return (
     <nav className="navbar">
       <div className="left-section">
@@ -26,11 +29,10 @@ function Navbar() {
       </ul>
       <div className="right-section">
         <Link to="/cart">
-          {/* Optional: <FaShoppingCart className="cart-icon" /> If using react-icons */}
-          <span className="cart-icon">🛒</span> {/* Use an emoji or image if not using react-icons */}
+          <span className="cart-icon">🛒</span>
+          {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>} 
         </Link>
       </div>
-
     </nav>
   );
 }

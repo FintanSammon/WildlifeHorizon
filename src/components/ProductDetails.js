@@ -1,20 +1,19 @@
-// ProductDetails.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
-import { useCart } from '../contexts/CartContext'; // Ensure the path to CartContext is correct
+import { useCart } from '../contexts/CartContext'; 
 import './ProductDetails.css';
 
 function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const { addToCart } = useCart(); // Using the addToCart function from CartContext
+  const { addToCart } = useCart(); 
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     async function fetchProduct() {
-      const docRef = doc(db, 'products', productId);
+      const docRef = doc(db, 'Products', productId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -28,7 +27,7 @@ function ProductDetails() {
   }, [productId]);
 
   const handleAddToCart = () => {
-    addToCart(product, quantity); // Use the addToCart from CartContext
+    addToCart(product, quantity); 
     console.log('Product added to cart');
   };
 
