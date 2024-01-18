@@ -42,7 +42,9 @@ function EcommercePage() {
     return (
         <div className="ecommerce-container">
             <div className="content-wrapper">
-                <h1>Shop Page</h1>
+            <h1>Explore Our Collection</h1>
+            <p>Find the perfect addition to your wardrobe and home with our exclusive t-shirts, cups, and posters.</p>
+
 
                 <div className="filter-container">
                     <Link to="/shop?category=all">All</Link>

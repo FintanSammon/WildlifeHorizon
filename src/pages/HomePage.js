@@ -35,6 +35,8 @@ function HomePage() {
       dfMessengerContainer.appendChild(dfMessengerTag);
     }
 
+    
+
     const fetchProducts = async () => {
       const querySnapshot = await getDocs(collection(db, "Products"));
       setProducts(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })).slice(0, 3));
@@ -47,18 +49,15 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="home-container">
-      {/* Hero Section */}
-      <div 
-        className="hero-image-container"
-        style={{ backgroundPositionY: offsetY * 0.5 }} 
-      >
-        <div className="hero-text-container">
-          <h1>Welcome to Wildlife Horizon</h1>
-          <p>Step into captivating digital recreations of nature's wonders.</p>
-          <Link to="/game" className="hero-button">
-            Start the Adventure
-          </Link>
+        <div className="home-container">
+          {/* Hero Section */}
+          <div className="hero-image-container">
+            <div className="hero-text-container">
+              <h1>Welcome to Wildlife Horizon</h1>
+              <p>Step into captivating digital recreations of nature's wonders.</p>
+              <Link to="/game" className="hero-button">
+                Start the Adventure
+              </Link>
         </div>
       </div>
 
