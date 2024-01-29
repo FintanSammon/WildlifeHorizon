@@ -42,7 +42,7 @@ body {
     width: 100%;
     height: 140vh;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/logo.png') center/cover no-repeat;
-    background-attachment: fixed; /* This ensures the parallax effect */
+    background-attachment: fixed; 
     background-position: center; 
     background-size: cover; 
   }
@@ -54,33 +54,33 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 90%; 
+    max-width: 100%; 
 
   
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: #333;
     margin-bottom: 1rem;
   }
 
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #555;
     margin-bottom: 2rem;
   }
 
   .hero-button {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.6rem;
     background-color: #4CAF50;
     color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
@@ -102,7 +102,7 @@ body {
 
 /* Rabbit Image Styles */
 .rabbit-image {
-    width: 80%; 
+    width: 100%; 
     object-fit: contain;
     margin-bottom: 2rem; 
     animation: hop 1s ease-in-out infinite; 
@@ -111,8 +111,8 @@ body {
   
   /* Intro Content Styles */
   .intro-content {
-    width: 90%; 
-    padding: 2rem; 
+    width: 100%; 
+    padding: 1rem; 
     text-align: center; 
   }
 
@@ -151,6 +151,7 @@ body {
   }
   
   .section-content {
+    grid-template-columns: 1fr; 
     max-width: 800px;
     margin: 0 auto;
     display: grid;
@@ -207,6 +208,7 @@ body {
   }
   
   .products-preview-container {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -260,18 +262,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
 
-  /* Ensure the product preview is responsive */
-@media (max-width: 768px) {
-    .product-preview {
-      flex: 0 1 calc(50% - 10px); 
-    }
-  }
   
-  @media (max-width: 480px) {
-    .product-preview {
-      flex: 0 1 100%; 
-    }
-  }
 
 
 
@@ -350,23 +341,153 @@ df-messenger {
   height: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 700px) {
+/*LEAVE THIS*/
+  
     .intro-container {
-      flex-direction: row; /* Use row layout for larger screens */
+      flex-direction: row;
       justify-content: center;
       padding: 4rem 0;
     }
   
     .rabbit-image {
-      width: 40%; /* Adjust width for larger screens */
-      margin-right: 2rem; /* Add margin to the right */
-      margin-bottom: 0; /* Remove bottom margin */
+      width: 40%; 
+      margin-right: 2rem;
+      margin-bottom: 0;
     }
   
     .intro-content {
-      width: 60%; /* Adjust width for larger screens */
-      padding: 3rem; /* Adjust padding */
-      text-align: left; /* Align text to the left for larger screens */
+      width: 60%;
+      padding: 3rem;
+      text-align: left;
     }
   }
 
+  /* Media Queries for Small Devices */
+
+@media screen and (max-width: 768px) {
+
+  .hero-image-container {
+    background-size: contain;
+    height: auto;
+  }
+  
+  .hero-text-container {
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-button {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+  }
+
+  .intro-container {
+    padding: 2rem 1rem;
+  }
+
+  .rabbit-image {
+    width: 100%;
+  }
+
+  .intro-content {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .section-content {
+    grid-template-columns: 1fr;
+  }
+
+  .product-preview {
+    flex: 0 1 calc(50% - 10px); 
+  }
+
+  .environment-image {
+    max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  #df-messenger-container {
+    width: 1px;
+    height: 1px;
+    bottom: 1px;
+    right: 1px;
+    z-index: 999;
+  }
+
+
+  .hero-image-container {
+    background-size: 90vw 50vh;
+    background-position: center center;
+    height: 60vh;
+    background-repeat: no-repeat;
+  }
+
+  .hero-logo {
+    transform: scale(0.7);
+    transform-origin: center;
+  }
+
+  .hero-text-container {
+    padding: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .intro-content h2 {
+    font-size: 2rem;
+  }
+
+  .intro-content p {
+    font-size: 1.5rem;
+  }
+
+  .product-preview {
+    flex: 0 1 100%;
+  }
+
+  .objective-section h2, 
+  .environment-showcase-section h2, 
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+
+  .objective-section p, 
+  .environment-showcase-section p, 
+  .cta-content p {
+    font-size: 1.4rem;
+  }
+
+  .home-button, 
+  .view-all-button, 
+  .explore-game-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+
+
+  

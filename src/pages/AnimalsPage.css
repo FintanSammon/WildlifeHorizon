@@ -126,7 +126,6 @@
         min-height: 300px; 
     }
 
-    /* Adjust text sizes for smaller screens */
     .parallax-content h3 {
         font-size: 1.5rem; 
     }
@@ -135,7 +134,6 @@
         font-size: 0.9rem; 
     }
 
-    /* Adjust text container for smaller screens */
     .parallax-content {
         max-width: 90%; 
         padding: 20px; 
@@ -144,7 +142,9 @@
     }
 }
 
-/* Additional media query for very small devices */
+
+
+
 @media screen and (max-width: 480px) {
     .parallax-card {
         min-height: 200px; 

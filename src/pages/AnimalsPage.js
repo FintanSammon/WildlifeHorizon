@@ -6,6 +6,8 @@ import rhinoImage from '../images/rhino.jpeg';
 import lionImage from '../images/lion.jpeg';
 
 
+
+
 const animalsData = [
     {
         name: 'Rabbit',
@@ -43,13 +45,50 @@ function ParallaxCard({ name, fact, image, index }) {
 }
 
 function AnimalsPage() {
+    const [modalContent, setModalContent] = React.useState(null);
+
+    const showModal = (animalName) => {
+        setModalContent(animalName);
+    };
+
+    const hideModal = () => {
+        setModalContent(null);
+    };
+
     return (
         <div className="animals-container">
             {animalsData.map((animal, index) => (
-                <ParallaxCard key={index} name={animal.name} fact={animal.fact} image={animal.image} />
+                <React.Fragment key={index}>
+                    <ParallaxCard name={animal.name} fact={animal.fact} image={animal.image} />
+                    {animal.name === 'Rabbit' && (
+                        <button onClick={() => showModal(animal.name)}>View 3D Model</button>
+                    )}
+                </React.Fragment>
             ))}
+            {modalContent && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <button className="close-button" onClick={hideModal}>X</button>
+                        <model-viewer 
+  src="/rabbit.glb"
+  ios-src="/rabbit.usdz" // USDZ file
+  alt="A 3D model of a rabbit"
+  camera-controls
+  auto-rotate
+  ar
+  ar-modes="webxr scene-viewer quick-look" 
+  ar-scale="auto"
+  environment-image="neutral"
+  shadow-intensity="1"
+  quick-look-browsers="safari chrome">
+</model-viewer>
+
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
+
 
 export default AnimalsPage;

@@ -15,16 +15,25 @@ function HomePage() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-
+  
     // Dialogflow messenger script
     const scriptSrc = "https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1";
     let dfMessengerScript = document.querySelector(`script[src="${scriptSrc}"]`);
     if (!dfMessengerScript) {
       dfMessengerScript = document.createElement('script');
       dfMessengerScript.src = scriptSrc;
+      dfMessengerScript.onload = () => {
+        const dfMessenger = document.querySelector('df-messenger');
+        if (dfMessenger) {
+          dfMessenger.style.setProperty('width', '300px', 'important');
+          dfMessenger.style.setProperty('height', '400px', 'important');
+          dfMessenger.style.setProperty('bottom', '10px', 'important');
+          dfMessenger.style.setProperty('right', '10px', 'important');
+        }
+      };
       document.body.appendChild(dfMessengerScript);
     }
-
+  
     const dfMessengerContainer = document.getElementById('df-messenger-container');
     if (dfMessengerContainer && !dfMessengerContainer.querySelector('df-messenger')) {
       const dfMessengerTag = document.createElement('df-messenger');
@@ -34,19 +43,17 @@ function HomePage() {
       dfMessengerTag.setAttribute('language-code', 'en');
       dfMessengerContainer.appendChild(dfMessengerTag);
     }
-
-    
-
+  
     const fetchProducts = async () => {
       const querySnapshot = await getDocs(collection(db, "Products"));
       setProducts(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })).slice(0, 3));
     };
-
+  
     fetchProducts();
-
-
+  
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
 
   return (
         <div className="home-container">
@@ -131,7 +138,7 @@ function HomePage() {
   <h2>Explore Our Virtual Safari</h2>
   <img src={environmentImage} alt="Virtual Safari Environment" className="environment-image"/>
   <p>Immerse yourself in the lush landscapes of Wildlife Horizon. Each corner of our digital safari is crafted to offer a serene and engaging experience, allowing you to explore the beauty of nature from the comfort of your home.</p>
-  <Link to="/game" className="explore-game-button">Explore the Game</Link> {/* Update the path if necessary */}
+  <Link to="/game" className="explore-game-button">Explore the Game</Link> 
 </motion.section>
 
 
