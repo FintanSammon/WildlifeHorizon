@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase/firebaseConfig'; 
 import environmentImage from '../images/environment.png';
 
+
 function HomePage() {
   const [offsetY, setOffsetY] = useState(0);
   const handleScroll = () => setOffsetY(window.pageYOffset);
@@ -56,18 +57,17 @@ function HomePage() {
   
 
   return (
-        <div className="home-container">
-          {/* Hero Section */}
-          <div className="hero-image-container">
-            <div className="hero-text-container">
-              <h1>Welcome to Wildlife Horizon</h1>
-              <p>Step into captivating digital recreations of nature's wonders.</p>
-              <Link to="/game" className="hero-button">
-                Start the Adventure
-              </Link>
+    <div className="home-container">
+      {/* Hero Section */}
+      <div className="hero-image-container">
+        <video autoPlay loop muted className="hero-video">
+          {/* Note the path to the video is relative to the public directory */}
+          <source src="/videos/WLH1.mp4" type="video/mp4" />
+        </video>
         </div>
-      </div>
-
+     
+     
+     
       {/* Intro Section */}
       <section className="intro-section">
         <div className="intro-container">

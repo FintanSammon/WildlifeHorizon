@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem; 
-  background-color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa; /* Lighter background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .left-section,
@@ -16,8 +16,8 @@
 }
 
 .navbar .home-icon {
-  font-size: 1.5rem;
-  color: #fff;
+  width: 65px; /* Set appropriate width */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .navbar .nav-links {
@@ -28,21 +28,22 @@
   justify-content: center;
   gap: 1rem; 
   flex-wrap: wrap;
+  font-size: 20px;
 }
 
 
 
 .navbar .nav-links a {
   text-decoration: none;
-  color: #fff;
+  color: #333; /* Darker color for text */
   padding: 0.5rem 0.75rem; 
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
 .navbar .nav-links a:hover {
-  background-color: #555;
-}
+  background-color: #e2e6ea; /* Light hover color */
+  color: #000;}
 
 .navbar .right-section {
   display: flex;
@@ -53,6 +54,13 @@
   font-size: 1.5rem;
   color: #fff;
 }
+
+.navbar .right-section .cart-icon, 
+.navbar .hamburger {
+  color: #333; /* Darker color for better visibility on light background */
+  /* Rest of your styles */
+}
+
 
 .cart-icon {
   position: relative;
@@ -162,4 +170,58 @@
   .navbar .left-section {
     display: none;
   }
+
+  /* Media query for smaller screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: relative;
+    left: 0;
+  }
+
+  .navbar .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #f8f9fa; /* Updated to lighter background color */
+    z-index: 2;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .navbar .nav-links.nav-expanded {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
+    right: 0;
+    background-color: #f8f9fa; /* Updated to lighter background color */
+    z-index: 2;
+    width: 100%;
+  }
+
+  .navbar .nav-links.nav-expanded a {
+    color: #333; /* Ensure text is visible on light background */
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid #e2e6ea; /* Lighter border color */
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 4rem;
+    font-size: 1.2rem;
+  }
+
+  .navbar .nav-links a {
+    color: #333; /* Ensure text is visible on light background */
+    text-align: center;
+    padding: 1rem;
+    pointer-events: auto;
+  }
+}
 }

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext'; 
 import './Navbar.css';
+import navLogo from '../images/navlogo.png'; // Import the image
+
 
 function Navbar() {
   const { cartItemCount } = useCart();
@@ -18,7 +20,7 @@ function Navbar() {
   return (
     <nav className="navbar">
         <Link to="/" onClick={closeNav}>
-          <span className="home-icon">🏠</span>
+        <img src={navLogo} alt="Home" className="home-icon" /> {/* Use the image here */}
         </Link>
       
       {/* Hamburger Icon */}
