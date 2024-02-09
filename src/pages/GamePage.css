@@ -137,7 +137,6 @@
     cursor: pointer;
   }
   
-  /* Animations for image and text */
 @keyframes slideInLeft {
     from {
       transform: translateX(-100%);
