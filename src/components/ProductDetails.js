@@ -10,6 +10,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const { addToCart } = useCart(); 
   const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState('M');
 
   useEffect(() => {
     async function fetchProduct() {
@@ -27,8 +28,8 @@ function ProductDetails() {
   }, [productId]);
 
   const handleAddToCart = () => {
-    addToCart(product, quantity); 
-    console.log('Product added to cart');
+    addToCart(product, quantity, size);
+    console.log('Product added to cart with size:', size);
   };
 
   if (!product) {
@@ -39,13 +40,13 @@ function ProductDetails() {
     <div className="product-details-container">
       <div className="product-details-card">
         <div className="product-details-image-container">
-          <img src={product.image} alt={product.name} className="product-image" />
+          <img src={product.image} alt={product.name} className="product-details-image" />
         </div>
         <div className="product-details-info">
           <h1 className="product-title">{product.name}</h1>
-          <p className="product-price">Price: {product.price}</p>
+          <p className="product-price">Price:€ {product.price}</p>
           <p className="product-description">{product.description}</p>
-          <div className="product-quantity">
+          <div className="product-quantity-size">
             Quantity:
             <input
               type="number"
@@ -54,6 +55,17 @@ function ProductDetails() {
               min={1}
               className="quantity-input"
             />
+            Size:
+            <select
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+              className="size-select"
+            >
+              <option value="S">Small</option>
+              <option value="M">Medium</option>
+              <option value="L">Large</option>
+              <option value="XL">Extra Large</option>
+            </select>
           </div>
           <button onClick={handleAddToCart} className="add-to-cart-btn">Add to Cart</button>
         </div>

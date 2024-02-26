@@ -6,10 +6,11 @@
   border-top: 5px solid #4CAF50; 
 }
 
-.footer-content {
+.footer-content p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  color: white;
 }
 
 .site-footer h3 {
@@ -45,10 +46,21 @@
 
 
 
-.footer-bottom {
+.footer-bottom p {
   font-size: 0.8rem;
   margin-top: 20px;
+  color: white;
 }
+
+.footer-social-media a {
+  margin: 0 10px;
+  color: white; 
+}
+
+.footer-social-media a:hover {
+  color: #4CAF50; 
+}
+
 
 @media (max-width: 768px) {
   .footer-links li {
