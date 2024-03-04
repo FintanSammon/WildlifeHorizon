@@ -32,14 +32,12 @@
     }
 }
 
-/* Container Styles */
 .home-container {
   margin: 0 auto;
   padding: 3rem 5%;
   background-color: #fff; 
 }
 
-/* Hero Section Styles */
 .hero-image-container {
   position: relative;
   width: 80%;
