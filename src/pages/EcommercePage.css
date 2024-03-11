@@ -6,7 +6,7 @@
 }
 
 .ecommerce-container h1 + p {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #555; 
   max-width: 1500px; 
   margin: 0 auto; 
@@ -69,7 +69,7 @@
 
 .shop-container p{
  color: black;
- font-size: 15px;
+ font-size: 20px;
 }
 
 .product {

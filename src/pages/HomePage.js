@@ -55,7 +55,7 @@ function HomePage() {
       {/* Hero Section */}
       <div className="hero-image-container">
         <video autoPlay loop muted playsInline className="hero-video">
-          <source src="/videos/WLH1.mp4" type="video/mp4" />
+          <source src="/videos/island.mp4" type="video/mp4" />
         </video>
       </div>
      

@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 
 const Chatbot = () => {
   useEffect(() => {
-    // Dialogflow messenger script
     const scriptSrc = "https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1";
     let dfMessengerScript = document.querySelector(`script[src="${scriptSrc}"]`);
     if (!dfMessengerScript) {
       dfMessengerScript = document.createElement('script');
       dfMessengerScript.src = scriptSrc;
       dfMessengerScript.onload = () => {
-        // Initialization of the chatbot
         const dfMessengerContainer = document.getElementById('df-messenger-container');
         if (!dfMessengerContainer.querySelector('df-messenger')) {
           const dfMessengerTag = document.createElement('df-messenger');
