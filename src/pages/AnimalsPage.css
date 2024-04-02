@@ -188,11 +188,11 @@ model-viewer {
     }
 
     .parallax-content h3 {
-        font-size: 1.5rem; 
+        font-size: 24px;
     }
 
     .parallax-content p {
-        font-size: 0.9rem; 
+        font-size: 14px;
     }
 
     .parallax-content {
@@ -201,6 +201,11 @@ model-viewer {
         top: 10%; 
         bottom: 10%; 
     }
+
+    .view-3d-button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
 }
 
 
@@ -208,6 +213,7 @@ model-viewer {
 
 @media screen and (max-width: 480px) {
     .parallax-card {
-        min-height: 200px; 
+        min-height: 300px; 
+        min-width: 100px;
     }
 }

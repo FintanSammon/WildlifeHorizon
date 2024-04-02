@@ -123,6 +123,7 @@
     color: #333;
     font-size: 1.9rem;
     line-height: 1.6;
+    text-align: left;
   }
   
   .image-container:hover .image-description {

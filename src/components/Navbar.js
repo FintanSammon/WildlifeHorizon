@@ -40,6 +40,7 @@ function Navbar() {
         <li><Link to="/game" onClick={() => setIsNavExpanded(false)}>Game</Link></li>
         <li><Link to="/shop" onClick={() => setIsNavExpanded(false)}>Shop</Link></li>
         <li><Link to="/animals" onClick={() => setIsNavExpanded(false)}>Animals</Link></li>
+        <li><Link to="/about" onClick={() => setIsNavExpanded(false)}>About</Link></li>
       </div>
 
       <div className="right-section">
