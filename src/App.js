@@ -16,6 +16,12 @@ import AboutPage from './pages/about';
 import ContactPage from './pages/contact';
 import LoginComponent from './components/LoginComponent';
 import RegistrationComponent from './components/RegistrationComponent';
+import PasswordResetComponent from './components/PasswordResetComponent';
+import Likes from './components/Likes';
+import Profile from './pages/Profile';
+
+
+
 
 function App() {
   return (
@@ -35,6 +41,10 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<LoginComponent />} />
             <Route path="/register" element={<RegistrationComponent />} />
+            <Route path="/reset-password" element={<PasswordResetComponent />} />
+            <Route path="/likes" element={<Likes />} /> 
+            <Route path="/profile" element={<Profile />} />
+
           </Routes>
           <Footer />
           <Chatbot />

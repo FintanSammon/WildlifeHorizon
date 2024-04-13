@@ -1,231 +1,44 @@
-.image-container.offscreen-left,
-.text-container.offscreen-left {
-  transform: translateX(-100vw);
-  opacity: 0;
+/* Button Styles */
+.button {
+  background-color: #4CAF50;
+  font-family: 'Chewy'; 
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  margin: 0 10px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
-.image-container.offscreen-right,
-.text-container.offscreen-right {
-  transform: translateX(100vw);
-  opacity: 0;
+.button:hover {
+  background-color: #367C39;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100vw);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.button.active {
+  background-color: #2e5c29;
+  color: #ffffff;
+  border-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.gamepage-container {
+  margin: 0 auto;
+  text-align: center;
 }
 
-.slide-in-left {
-  animation: slideInFromLeft 1s ease-out forwards;
+.gamepage-container h1 {
+  font-size: 3.5rem;
+  color: #333;
+  margin-bottom: 20px;
 }
-
-.slide-in-right {
-  animation: slideInFromRight 1s ease-out forwards;
-}
-
-  
-
-  .gamepage-container h1 {
-    font-size: 3.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-    font-weight: normal;
-  }
-
-  
-  
-
-  
-  .image-text-container {
-    opacity: 1;
-  visibility: visible;
-  transform: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    width: 100%;
-  }
-
-  .image-text-container:not(.slide-in) {
-    opacity: 0;
-  }
-
-  .image-text-container.row-reverse {
-    flex-direction: row-reverse;
-  }
-
-  .image-container, .text-container {
-    width: 60%;
-    margin: 20px;
-  }
-
-
-  
-  .image-text-container.slide-in {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    animation: slideIn 1s forwards;
-  }
-  
-  .image-container {
-    width: 50%; 
-    margin: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .game-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  .text-container {
-    width: 40%; 
-    margin: 20px;
-  }
-  
-  
-  .game-image:hover {
-    transform: scale(1.03); 
-  }
-  
-  .image-description {
-    color: #333;
-    font-size: 1.9rem;
-    line-height: 1.6;
-    text-align: left;
-  }
-  
-  .image-container:hover .image-description {
-    transform: translateY(0); 
-  }
-  
-  .trailer-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 20px 0;
-    transition: background-color 0.3s ease;
-  }
-  
-  .trailer-button:hover {
-    background-color: #367c39;
-  }
-  
-  .modal {
-    display: flex;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 900px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    position: relative; 
-  }
-  
-  .trailer-video {
-    width: 100%; 
-    max-height: 500px; 
-    border-radius: 5px; 
-  }
-  
-  .close-button {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close-button:hover,
-  .close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
- 
-  
-  .image-container {
-    animation: slideInLeft 1s forwards;
-  }
-  
-  .text-container {
-    animation: slideInRight 1s forwards;
-  }
-  
-  
-  @media (max-width: 768px) {
-
-    .image-text-container, .image-text-container.row-reverse {
-      flex-direction: column;
-    }
-
-    .image-text-container {
-      flex-direction: column;
-    }
-  
-    .image-container, .text-container {
-      width: 100%;
-      margin: 10px auto;
-    }
-  
-    .gamepage-container h1 {
-      font-size: 2.5rem;
-    }
-  
-    .image-description {
-      font-size: 1.4rem;
-    }
-  }

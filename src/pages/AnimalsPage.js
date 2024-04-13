@@ -1,109 +1,65 @@
 import React from 'react';
 import './AnimalsPage.css';
-import giraffeImage from '../images/giraffe2.png'; 
-import rabbitImage from '../images/rabbitpic1.jpg';
-import rhinoImage from '../images/rhino.jpeg';
-import lionImage from '../images/lion.jpeg';
-
-
-
+import giraffeImage from '../webp/giraffe2.webp'; 
+import rabbitImage from '../webp/rabbitpic1.webp';
+import monkeyImage from '../images/monkey.png';
+import jaguarImage from '../images/jaguar.png';
 
 const animalsData = [
-    {
-        name: 'Rabbit',
-        image: rabbitImage,
-        fact: 'Rabbits have a complex social structure and can live in large colonies. A rabbits teeth never stop growing, which is why they need to constantly nibble on grasses and other vegetation.',
-    },
-    {
-        name: 'Giraffe',
-        image: giraffeImage,
-        fact: 'Giraffes are the tallest mammals on Earth, with their height aiding in spotting predators and foraging tree foliage that other herbivores cant reach. Unlike most animals, giraffes rarely lay down; they even sleep and give birth standing up',
-    },
-    {
-        name: 'Rhino',
-        image: rhinoImage,
-        fact: 'The rhino’s horn is made from keratin, the same type of protein that makes up hair and fingernails. Rhinos have poor eyesight, but their sense of smell and hearing are very well developed.',
-    },
-    {
-        name: 'Lion',
-        image: lionImage,
-        fact: 'A lion’s roar can be heard from 5 miles away. Lions spend much of their time resting; they are inactive for about 20 hours per day.',
-    },
+    { name: 'Rabbit', image: rabbitImage, fact: 'Rabbits have a complex social structure and can live in large colonies. A rabbit’s teeth never stop growing, which is why they need to constantly nibble on grasses and other vegetation.' },
+    { name: 'Giraffe', image: giraffeImage, fact: 'Giraffes are the tallest mammals on Earth, with their height aiding in spotting predators and foraging tree foliage that other herbivores can’t reach. Unlike most animals, giraffes rarely lay down; they even sleep and give birth standing up.' },
+    { name: 'Monkey', image: monkeyImage, fact: 'Monkeys are highly social animals often living in complex hierarchical communities and are known for their intelligence and use of tools.' },
+    { name: 'Jaguar', image: jaguarImage, fact: 'Jaguars are the largest of South America’s big cats and are known for their powerful builds and deep roars. They are excellent swimmers and often live near water such as rivers and lakes.' },
 ];
 
 function ParallaxCard({ name, fact, image, index, onView3DModel }) {
     const cardTheme = index % 2 === 0 ? 'dark' : 'light';
     const additionalClass = name === 'Giraffe' ? 'giraffe-card' : '';
+
     return (
-        <div className={`parallax-card ${cardTheme} ${additionalClass}`} style={{ backgroundImage: `url(${image})` }}> {/* Update this line */}
+        <div className={`parallax-card ${cardTheme} ${additionalClass}`} style={{ backgroundImage: `url(${image})` }}>
             <div className="image-overlay"></div>
+            <div className="tap-hint">Tap to discover!</div>
             <div className="parallax-content">
                 <h3>{name}</h3>
                 <p>{fact}</p>
-                {(name === 'Rabbit' || name === 'Giraffe') && (
-                    <button className="view-3d-button" onClick={() => onView3DModel(name)}>View 3D Model</button>
-                )}
+                <button className="view-3d-button" onClick={() => onView3DModel(name)}>View 3D Model</button>
             </div>
         </div>
     );
 }
 
-
-
-
-
-
 function AnimalsPage() {
     const [modalContent, setModalContent] = React.useState(null);
 
     const showModal = (animalName) => {
+        document.body.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
         setModalContent(animalName);
-    };
-
-    const hideModal = () => {
+      };
+      
+      const hideModal = () => {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
         setModalContent(null);
-    };
-
-    const getModelFileName = (animalName) => {
-        if (animalName === 'Giraffe') {
-            return 'giraffeGLB';
-        } else if (animalName === 'Rabbit') { 
-            return 'rabbitGLB'; 
-        } else {
-            return `${animalName}GLB`; 
-        }
-    }
+      };
+      
+    const getModelFileName = (animalName) => `${animalName.toLowerCase()}GLB`;
 
     return (
         <div className="animals-container">
+            <div className="welcome-section">
+                <h2>Welcome to Our Animals Page</h2>
+                <p>We're thrilled to have you explore our digital zoo. All animals on this page were meticulously created with Blender to bring them to life in the most enchanting way possible.</p>
+            </div>
             {animalsData.map((animal, index) => (
-                <React.Fragment key={index}>
-                    <ParallaxCard
-                        key={animal.name}
-                        name={animal.name}
-                        fact={animal.fact}
-                        image={animal.image}
-                        onView3DModel={showModal}
-                    />
-                </React.Fragment>
+                <ParallaxCard key={animal.name} {...animal} onView3DModel={showModal} />
             ))}
             {modalContent && (
                 <div className="modal">
                     <div className="modal-content">
                         <button className="close-button" onClick={hideModal}>X</button>
-                        <model-viewer
-                            src={`/${getModelFileName(modalContent)}.glb`}
-                            ios-src={`/${getModelFileName(modalContent)}.usdz`}
-                            alt={`A 3D model of a ${modalContent}`}
-                            camera-controls
-                            auto-rotate
-                            ar
-                            ar-modes="webxr scene-viewer quick-look"
-                            ar-scale="auto"
-                            environment-image="neutral"
-                            shadow-intensity="1"
-                            quick-look-browsers="safari chrome"
-                        ></model-viewer>
+                        <model-viewer src={`/${getModelFileName(modalContent)}.glb`} ios-src={`/${getModelFileName(modalContent)}.usdz`} alt={`A 3D model of a ${modalContent}`} camera-controls auto-rotate ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" environment-image="neutral" shadow-intensity="1" quick-look-browsers="safari chrome"></model-viewer>
                     </div>
                 </div>
             )}

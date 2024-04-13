@@ -3,13 +3,11 @@ import './about.css';
 import { useInView } from 'react-intersection-observer';
 
 const About = () => {
-  const { ref: ref1, inView: inView1 } = useInView({
-    triggerOnce: false, 
-    threshold: 0.5,
-  });
-  const { ref: ref2, inView: inView2 } = useInView({ triggerOnce: false, threshold: 0.5 });
-  const { ref: ref3, inView: inView3 } = useInView({ triggerOnce: false, threshold: 0.5 });
-  const { ref: ref4, inView: inView4 } = useInView({ triggerOnce: false, threshold: 0.5 });
+  const commonOptions = { triggerOnce: true, threshold: 0.5 };
+  const { ref: ref1, inView: inView1 } = useInView(commonOptions);
+  const { ref: ref2, inView: inView2 } = useInView(commonOptions);
+  const { ref: ref3, inView: inView3 } = useInView(commonOptions);
+  const { ref: ref4, inView: inView4 } = useInView(commonOptions);
 
   return (
     <div className="about-container">

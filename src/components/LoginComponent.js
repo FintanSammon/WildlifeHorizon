@@ -47,6 +47,11 @@ export default function LoginComponent() {
           />
         </div>
         <button type="submit">Login</button>
+        <button type="button" onClick={() => navigate('/reset-password')} style={{marginTop: '10px'}}>Forgot Password?</button>
+        <p className="auth-switch">
+          Don't have an account? 
+          <button type="button" onClick={() => navigate('/register')} style={{marginLeft: '5px'}}>Register Here</button>
+        </p>
       </form>
     </div>
   );

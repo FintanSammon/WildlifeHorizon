@@ -77,3 +77,22 @@
 .section.slide-in-left, .section.slide-in-right {
   visibility: visible;
 }
+
+/* Mobile style */
+@media (max-width: 600px) {
+  .about-container {
+      padding: 20px;
+      max-width: 100%;
+  }
+
+  .about-container h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+  }
+
+  .about-container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+}
