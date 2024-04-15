@@ -156,9 +156,9 @@ function HomePage() {
                 >
                     <h2>Explore Our Virtual Island</h2>
                     <Slider {...settings}>
-                        <img src={environmentImage} alt="Virtual Island Environment" className="slider-image" />
-                        <img src={environment1} alt="Environment 1" className="slider-image" />
-                        <img src={environment2} alt="Environment 2" className="slider-image" />
+                        <img src={environmentImage} alt="Virtual Island Environment" className="slider-image" loading="lazy"/>
+                        <img src={environment1} alt="Environment 1" className="slider-image" loading="lazy"/>
+                        <img src={environment2} alt="Environment 2" className="slider-image" loading="lazy"/>
                     </Slider>
                     <p>Immerse yourself in the lush landscapes of Wildlife Horizon. Each corner of our digital island is crafted to offer a serene and engaging experience, allowing you to explore the beauty of nature from the comfort of your home.</p>
                     <Link to="/game" className="explore-game-button">Explore the Game</Link>

@@ -21,12 +21,12 @@ function Island2({ openTrailer }) {
   ];
 
   const tropicalDescriptions = [
-    "Explore the pristine beaches of the island, where the waves gently kiss the shore, a perfect paradise for relaxation and sunbathing.",
-    "Wander through the lush, dense forest trails, rich with diverse flora and fauna, breathing life into the island's vibrant ecosystem.",
-    "Dive into the clear blue waters to discover the colorful coral reefs teeming with marine life, an underwater wonderland waiting to be explored.",
-    "Watch the sky as it paints itself with the colors of the sunset, a daily spectacle of nature's beauty at the horizon.",
-    "Follow the sounds of the cascading waterfalls hidden within the heart of the island, a natural retreat for peace and reflection.",
-    "Visit the quaint village where local traditions thrive, offering a glimpse into the island's cultural heritage and community spirit."
+    "Welcome to the island, where the beach is sunny and inviting. You'll walk on the warm sand, look up at tall palm trees, and maybe even find hidden spots to explore near the big volcano far off.",
+    "Deep inside the island, you'll find a cool place with lots of grass and trees where it's a bit shady, and you might come across an animal who looks like they're searching for something special, just like you.",
+    "The island is home to some amazing animals. Imagine coming face to face with a beautiful jaguar, its coat dotted with hundreds of spots, and watching it roam around freely in its home.",
+    "As you wander through the island, the spotted jaguar might cross your path again, strolling through the greenery or resting in a sunny spot, not minding your presence at all.",
+    "When the sun starts to set on the island, the sky turns into a canvas of oranges and pinks above the mountain. It's a perfect time to stop and look at the sky changing colors.",
+    "The island shines in the daylight. There's a wooden bridge that leads to more adventure, and it looks like it has stories to tell. Crossing it, you'll feel like you're heading into a new chapter of your adventure."
   ];
 
   return (

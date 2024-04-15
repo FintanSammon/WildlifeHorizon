@@ -22,14 +22,14 @@
 }
 
 .auth-form button {
-  background-color: #007bff;
+  background-color: #367C39;
   color: white;
   cursor: pointer;
   border: none;
 }
 
 .auth-form button:hover {
-  background-color: #0056b3;
+  background-color: #367C39;
 }
 
 .auth-form label {
