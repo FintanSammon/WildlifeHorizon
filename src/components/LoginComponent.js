@@ -56,3 +56,6 @@ export default function LoginComponent() {
     </div>
   );
 }
+
+export default LoginComponent;
+
