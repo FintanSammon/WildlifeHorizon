@@ -26,6 +26,7 @@
     "react-scripts": "^5.0.0",
     "react-slick": "^0.29.0",
     "react-spring": "^9.7.3",
+    "react-toastify": "^10.0.5",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },

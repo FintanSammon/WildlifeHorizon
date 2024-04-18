@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/AuthContext'; 
 import Navbar from './components/Navbar';
@@ -19,9 +21,6 @@ import RegistrationComponent from './components/RegistrationComponent';
 import PasswordResetComponent from './components/PasswordResetComponent';
 import Likes from './components/Likes';
 import Profile from './pages/Profile';
-
-
-
 
 function App() {
   return (
@@ -44,10 +43,10 @@ function App() {
             <Route path="/reset-password" element={<PasswordResetComponent />} />
             <Route path="/likes" element={<Likes />} /> 
             <Route path="/profile" element={<Profile />} />
-
           </Routes>
           <Footer />
           <Chatbot />
+          <ToastContainer />
         </Router>
       </CartProvider>
     </AuthProvider>

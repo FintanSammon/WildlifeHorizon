@@ -9,7 +9,7 @@
 
 .welcome-section {
     text-align: left;
-    padding: 10px;
+    padding: 5px;
     background-color: #ffffff;
     border-radius: 10px;
     max-width: 90%;
@@ -227,9 +227,27 @@ model-viewer {
 body.modal-open .tap-hint {
     display: none;
   }
+
+  .mobile-ar-info {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.parallax-content.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
   
 
 @media screen and (max-width: 768px) {
+    .mobile-ar-info {
+        display: none;
+    }
 
     .tap-hint {
         display: block;

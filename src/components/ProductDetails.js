@@ -5,6 +5,8 @@ import { db } from '../firebase/firebaseConfig';
 import { useCart } from '../contexts/CartContext'; 
 import { useAuth } from '../contexts/AuthContext';
 import './ProductDetails.css';
+import { toast } from 'react-toastify';
+
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -45,6 +47,15 @@ function ProductDetails() {
 
   const handleAddToCart = () => {
     addToCart(product, quantity, size);
+    toast.success(`Added ${product.name} to your cart!`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     console.log('Product added to cart with size:', size);
   };
 

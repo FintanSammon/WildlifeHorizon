@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './GamePage.css';
 import Island1 from '../components/Island1';
 import Island2 from '../components/Island2';
-import trailerVideo from '../videos/WildLifeHorizon.mp4';
+import trailerVideo from '../videos/NewWildLifeHorizon.mp4';
 
 function GamePage() {
   const [activeTab, setActiveTab] = useState('island1');

@@ -89,4 +89,3 @@ export default function RegistrationComponent() {
     </div>
   );
 }
-export default RegistrationComponent;
