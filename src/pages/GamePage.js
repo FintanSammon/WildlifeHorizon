@@ -15,9 +15,11 @@ function GamePage() {
         <button onClick={() => setActiveTab('island1')} className={`button ${activeTab === 'island1' ? 'active' : ''}`}>Island 1</button>
         <button onClick={() => setActiveTab('island2')} className={`button ${activeTab === 'island2' ? 'active' : ''}`}>Island 2</button>
       </div>
+      <div className="trailer-button-container">
+        <button className="trailer-button" onClick={() => setIsTrailerModalOpen(true)}>Watch Trailer</button>
+      </div>
       {activeTab === 'island1' && <Island1 />}
       {activeTab === 'island2' && <Island2 />}
-      <button className="trailer-button pulse" onClick={() => setIsTrailerModalOpen(!isTrailerModalOpen)}>Watch Trailer</button>
       {isTrailerModalOpen && (
         <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
           <div className="modal-content">

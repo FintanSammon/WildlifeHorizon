@@ -1,63 +1,67 @@
 .profile-container {
-    display: flex;
-    width: 100%;
-  }
-  
-  .profile-sidebar {
-    min-width: 200px;
-    border-right: 1px solid #ccc;
-    padding: 20px;
-  }
-  
-  .profile-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  .profile-sidebar button {
-    display: block;
-    background: none;
-    border: none;
-    text-align: left;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-    color: black;
-  }
-  
-  .profile-sidebar button:hover {
-    background-color: #f0f0f0;
-    color: #333;
-  }
-  
-  .profile-sidebar button.active {
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-  }
-  
+  display: flex;
+  width: 100%;
+}
+
+.profile-sidebar {
+  min-width: 200px;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+}
+
+.profile-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.profile-sidebar button {
+  display: block;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  color: black;
+  font-size: 1rem;
+}
+
+.profile-sidebar button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.profile-sidebar button.active {
+  font-weight: bold;
+  color: black;
+}
+
   @media (max-width: 768px) {
     .profile-container {
       flex-direction: column;
     }
   
-    .profile-sidebar {
-      min-width: 0;
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-around;
-      order: -1;
-    }
-  
     .profile-sidebar button {
       padding: 10px;
-      width: auto;
+      margin: 3px; 
+      font-size: 16px;
+      flex-grow: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
   
+ 
     .profile-content {
-      margin-top: 20px;
+      padding: 20px;
     }
   }
+
+
+@media (max-width: 480px) {
+
   
+  .profile-content {
+    padding: 15px 10px;
+  }
+}

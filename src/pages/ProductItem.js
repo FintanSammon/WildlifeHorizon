@@ -25,17 +25,16 @@ const ProductItem = ({ product, index }) => {
     animate: { opacity: inView ? 1 : 0, x: inView ? 0 : (index % 2 === 0 ? -100 : 100) },
     transition: { duration: 1 }
   } : {
-    // Apply static properties for small screens to prevent animation
     initial: { opacity: 1, x: 0 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 0 } // No transition for small screens
+    transition: { duration: 0 } 
   };
 
   return (
     <Link to={`/shop/${product.id}`} state={{ product }}>
       <motion.div
         ref={ref}
-        {...animationProps} // Apply the conditional animation properties here
+        {...animationProps}
         className="product"
       >
         <img src={product.image} alt={product.name} className="product-image"/>

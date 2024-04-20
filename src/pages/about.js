@@ -12,10 +12,9 @@ const About = () => {
   return (
     <div className="about-container">
       <div ref={ref1} className={`section ${inView1 ? 'slide-in-left' : 'slide-out-right'}`}>
-        <h1>Welcome to Horizon Wildlife!</h1>
+        <h1>Welcome to Wildlife Horizon!</h1>
         <p>
-          We are a passionate team of four students dedicated to blending education with entertainment through our innovative game and app, Wildlife Horizon. Our journey began at ATU, where we envisioned a platform that allows users to explore diverse environments and interact with the animals that inhabit them. Horizon Wildlife is not just a game; it's an educational tool that offers a window into the wonders of the natural world.
-        </p>
+        We are Fintan, Christian, Shane, and Liam, a passionate team of four students dedicated to blending education with entertainment through our innovative game and app, Wildlife Horizon. Our journey began at ATU, where we envisioned a platform that allows users to explore diverse environments and interact with the animals that inhabit them. Horizon Wildlife is not just a game; it's an educational tool that offers a window into the wonders of the natural world.        </p>
       </div>
       
       <div ref={ref2} className={`section ${inView2 ? 'slide-in-right' : 'slide-out-left'}`}>

@@ -7,7 +7,6 @@ import jaguarImage from '../images/jaguar.png';
 import stagImage from '../webp/Stag.webp';
 import horseImage from '../webp/Horse.webp';
 
-// Expanded animalsData array with Horse and Stag entries
 const animalsData = [
     { name: 'Rabbit', image: rabbitImage, fact: 'Rabbits have a complex social structure and can live in large colonies. A rabbit’s teeth never stop growing, which is why they need to constantly nibble on grasses and other vegetation.' },
     { name: 'Giraffe', image: giraffeImage, fact: 'Giraffes are the tallest mammals on Earth, with their height aiding in spotting predators and foraging tree foliage that other herbivores can’t reach. Unlike most animals, giraffes rarely lay down; they even sleep and give birth standing up.' },
@@ -20,10 +19,8 @@ const animalsData = [
 function ParallaxCard({ name, fact, image, index, onView3DModel, modalContent }) {
     const cardTheme = index % 2 === 0 ? 'dark' : 'light';
     const additionalClass = name === 'Giraffe' ? 'giraffe-card' : '';
-    // Determine if this card's content should be hidden
     const isContentHidden = modalContent === name;
 
-    // Inline styles to hide content when the modal is open
     const contentStyles = isContentHidden ? { opacity: 0, visibility: 'hidden' } : {};
 
     return (
@@ -68,7 +65,7 @@ function AnimalsPage() {
                     key={animal.name}
                     {...animal}
                     onView3DModel={showModal}
-                    modalContent={modalContent} // Pass the modalContent state to each card
+                    modalContent={modalContent}
                 />
             ))}
             {modalContent && (
