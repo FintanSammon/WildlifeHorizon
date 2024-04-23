@@ -3,7 +3,6 @@ import { useCart } from '../contexts/CartContext';
 import './CartPage.css';
 import { useNavigate } from 'react-router-dom';
 
-// CartPage component
 const CartPage = () => {
   // Accessing cartItems and removeFromCart function from CartContext
   const { cartItems, removeFromCart } = useCart();
