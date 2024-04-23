@@ -3,27 +3,34 @@ import { useCart } from '../contexts/CartContext';
 import './CartPage.css';
 import { useNavigate } from 'react-router-dom';
 
+// CartPage component
 const CartPage = () => {
+  // Accessing cartItems and removeFromCart function from CartContext
   const { cartItems, removeFromCart } = useCart();
-  const navigate = useNavigate();
-  const [discountCode, setDiscountCode] = useState('');
-  const [discountApplied, setDiscountApplied] = useState(false);
-  const [discountAmount, setDiscountAmount] = useState(0);
+  const navigate = useNavigate(); // Hook for navigation
+  const [discountCode, setDiscountCode] = useState(''); // State for discount code
+  const [discountApplied, setDiscountApplied] = useState(false); // State for discount applied status
+  const [discountAmount, setDiscountAmount] = useState(0); // State for discount amount
 
+  // Function to calculate total cost
   const calculateTotal = (items) => {
     const total = items.reduce((total, item) => total + item.price * item.quantity, 0);
     return discountApplied ? total - discountAmount : total;
   };
 
+  // Function to handle checkout
   const handleCheckout = () => {
     navigate('/checkout', { state: { discountCode, discountAmount } });
   };
 
+  // Function to apply discount
   const applyDiscount = () => {
     if (discountCode === "WLH" && !discountApplied) {
-      setDiscountAmount(10);  // Flat discount for demonstration
+      const total = calculateTotal(cartItems);
+      const discountValue = total * 0.40;
+      setDiscountAmount(discountValue);
       setDiscountApplied(true);
-      alert('Discount applied successfully!');
+      alert('40% discount applied successfully!');
     } else if (discountApplied) {
       alert('Discount already applied');
     } else {
@@ -31,6 +38,7 @@ const CartPage = () => {
     }
   };
 
+  // JSX structure for empty cart
   if (cartItems.length === 0) {
     return (
       <div className="cart-empty">
@@ -39,6 +47,7 @@ const CartPage = () => {
     );
   }
 
+  // JSX structure for cart with items
   return (
     <div className="cart-container">
       <h1>Your Cart</h1>

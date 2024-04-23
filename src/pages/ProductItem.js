@@ -4,13 +4,16 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const ProductItem = ({ product, index }) => {
+  // State and hook to observe element visibility
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
+  // State to determine screen size
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
 
+  // Effect hook to handle window resize
   useEffect(() => {
     function handleResize() {
       setIsLargeScreen(window.innerWidth >= 768);
@@ -20,6 +23,7 @@ const ProductItem = ({ product, index }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Animation properties based on screen size
   const animationProps = isLargeScreen ? {
     initial: { opacity: 0, x: index % 2 === 0 ? -100 : 100 },
     animate: { opacity: inView ? 1 : 0, x: inView ? 0 : (index % 2 === 0 ? -100 : 100) },
@@ -30,6 +34,7 @@ const ProductItem = ({ product, index }) => {
     transition: { duration: 0 } 
   };
 
+  // Rendering product item
   return (
     <Link to={`/shop/${product.id}`} state={{ product }}>
       <motion.div

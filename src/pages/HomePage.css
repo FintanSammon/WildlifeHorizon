@@ -52,17 +52,16 @@
 .intro-container {
   width: 100%;
   box-sizing: border-box;
-  margin-top: 10px;
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   padding: 4rem 0rem;
   background-attachment: fixed;
-  background-image: url('../webp/environment4.webp'); 
-  background-size: cover; 
-  background-position: center; 
+  background-image: url('../webp/environment4.webp');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   border-radius: 20px;
   position: relative;
@@ -90,17 +89,23 @@
 }
 
 .rabbit-image {
-  width: 40%; 
+  width: 40%;
   object-fit: contain;
-  margin-bottom: 2rem; 
-  animation: hop 1s ease-in-out infinite; 
+  margin-bottom: 2rem;
+  animation: hop 1s ease-in-out infinite;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
 .rabbit-image:hover {
-  transform: scale(1.5);
+  transform: scale(1.1);
 }
 
+
+.come-in {
+  opacity: 1; 
+  transform: translateY(0);
+}
 
 .intro-content {
   background: rgba(250, 250, 250, 0.9);
@@ -108,12 +113,11 @@
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+  z-index: 1;
+  max-width: 60%;
+  text-align: center;
 }
 
-.come-in {
-  opacity: 1; 
-  transform: translateY(0);
-}
 
 .intro-content:hover {
   transform: translateY(-5px);
@@ -171,6 +175,61 @@ line-height: 1.6;
 margin-bottom: 1rem;
 text-align: left;
 }
+
+.objective-section {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.objective-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.objective-content, .promo-code-container {
+  flex: 1;
+}
+
+.promo-code-container {
+  padding: 1rem;
+  background-color: rgba(255, 250, 200, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.promo-content h3 {
+  color: #d35400;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.promo-content p {
+  color: #333;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .objective-flex-container {
+    flex-direction: column;
+  }
+
+  .promo-code-container {
+    margin-top: 20px;
+  }
+}
+
 
 
 /* Products Preview Section */

@@ -22,6 +22,7 @@
     font-size: 3rem;
     margin-bottom: 1rem;
     font-weight: normal;
+    text-align: center;
   }
   
   .welcome-section p {
@@ -152,9 +153,11 @@
 }
 
 .parallax-content p {
-    color: #666;
+    color: rgb(0, 0, 0);
     font-size: 2rem;
     margin: 0;
+    text-align: left;
+
 }
 
 .modal-content {
@@ -239,8 +242,6 @@ body.modal-open .tap-hint {
     opacity: 0;
     visibility: hidden;
 }
-
-
   
 
 @media screen and (max-width: 768px) {
@@ -262,7 +263,7 @@ body.modal-open .tap-hint {
     }
 
     .parallax-content p {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .parallax-content {

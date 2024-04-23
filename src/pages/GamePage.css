@@ -1,15 +1,27 @@
+/* Existing styles for desktop, kept unchanged */
 .button {
   background-color: #4CAF50;
-  font-family: 'Chewy'; 
+  font-family: 'Chewy';
   color: white;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border: 2px solid transparent;
   border-radius: 25px;
   margin: 0 10px;
   cursor: pointer;
   outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.trailer-and-download-container, .buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .button:hover {
@@ -24,13 +36,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
 .gamepage-container {
   margin: 0 auto;
   text-align: center;
@@ -42,35 +47,41 @@
   margin-bottom: 20px;
 }
 
-.trailer-button {
+.trailer-button, .download-button {
   display: block;
   max-width: 240px;
   margin: 20px auto;
   background-color: #4CAF50;
   color: white;
-  padding: 16px 32px;
+  padding: 20px 40px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-
-.trailer-button:hover, .trailer-button:focus {
+.trailer-button:hover, .download-button:hover {
   background-color: #367c39;
   transform: translateY(-2px);
-  outline: none;
 }
 
-@keyframes pulse-animation {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+/* Media Queries for Mobile Devices (less than 768px) */
+@media (max-width: 768px) {
+  .button, .trailer-button, .download-button {
+    padding: 12px 24px;  /* Slightly reduced padding */
+    font-size: 1rem;  /* Smaller font for smaller screens */
+    max-width: none;  /* Allow full width on mobile */
+    width: 100%;  /* Full width buttons for better mobile usability */
+  }
 
-.pulse {
-  animation: pulse-animation 2s infinite;
+  .gamepage-container h1 {
+    font-size: 2rem;  /* Smaller title on small screens */
+  }
+
+  .buttons-container, .trailer-container, .download-container {
+    flex-direction: column;  /* Stack buttons vertically on mobile */
+  }
 }

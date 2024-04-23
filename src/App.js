@@ -22,6 +22,7 @@ import PasswordResetComponent from './components/PasswordResetComponent';
 import Likes from './components/Likes';
 import Profile from './pages/Profile';
 
+
 function App() {
   return (
     <AuthProvider> 
@@ -43,6 +44,7 @@ function App() {
             <Route path="/reset-password" element={<PasswordResetComponent />} />
             <Route path="/likes" element={<Likes />} /> 
             <Route path="/profile" element={<Profile />} />
+
           </Routes>
           <Footer />
           <Chatbot />

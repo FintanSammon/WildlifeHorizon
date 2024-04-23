@@ -1,52 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { doc, getDoc, updateDoc, setDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
-import { db } from '../firebase/firebaseConfig';
+import { useParams } from 'react-router-dom'; 
+import { doc, getDoc, updateDoc, setDoc, arrayUnion, arrayRemove } from 'firebase/firestore'; 
+import { db } from '../firebase/firebaseConfig'; 
 import { useCart } from '../contexts/CartContext'; 
-import { useAuth } from '../contexts/AuthContext';
-import './ProductDetails.css';
-import { toast } from 'react-toastify';
+import { useAuth } from '../contexts/AuthContext'; 
+import './ProductDetails.css'; 
+import { toast } from 'react-toastify'; 
 
-
+// Function component for displaying product details
 function ProductDetails() {
-  const { productId } = useParams();
-  const [product, setProduct] = useState(null);
+  // Extracting productId from URL parameters
+  const { productId } = useParams(); 
+  // State variables to manage product details, cart functionality, user authentication, quantity, size, and like status
+  const [product, setProduct] = useState(null); 
   const { addToCart } = useCart(); 
-  const { currentUser } = useAuth();
-  const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState('M');
-  const [liked, setLiked] = useState(false);
+  const { currentUser } = useAuth(); 
+  const [quantity, setQuantity] = useState(1); 
+  const [size, setSize] = useState('M'); 
+  const [liked, setLiked] = useState(false); 
 
+  // Effect to fetch product details from Firestore based on productId
   useEffect(() => {
     async function fetchProduct() {
-      const docRef = doc(db, 'Products', productId);
-      const docSnap = await getDoc(docRef);
+      const docRef = doc(db, 'Products', productId); 
+      const docSnap = await getDoc(docRef); 
 
       if (docSnap.exists()) {
-        setProduct({ id: docSnap.id, ...docSnap.data() });
+        setProduct({ id: docSnap.id, ...docSnap.data() }); 
       } else {
         console.log("No such product!");
       }
     }
 
-    fetchProduct();
-  }, [productId]);
+    fetchProduct(); 
+  }, [productId]); 
 
+  // Effect to check if the current user has liked the product
   useEffect(() => {
     if (currentUser) {
       const checkIfLiked = async () => {
-        const userLikesRef = doc(db, 'UserLikes', currentUser.uid);
-        const docSnap = await getDoc(userLikesRef);
+        const userLikesRef = doc(db, 'UserLikes', currentUser.uid); 
+        const docSnap = await getDoc(userLikesRef); 
         if (docSnap.exists() && docSnap.data().likedProducts.includes(productId)) {
-          setLiked(true);
+          setLiked(true); 
         }
       };
-      checkIfLiked();
+      checkIfLiked(); 
     }
-  }, [currentUser, productId]);
+  }, [currentUser, productId]); 
 
+  // Function to handle adding product to cart
   const handleAddToCart = () => {
-    addToCart(product, quantity, size);
+    addToCart(product, quantity, size); 
     toast.success(`Added ${product.name} to your cart!`, {
       position: "top-right",
       autoClose: 5000,
@@ -59,39 +64,42 @@ function ProductDetails() {
     console.log('Product added to cart with size:', size);
   };
 
+  // Function to toggle product like status
   const toggleLike = async () => {
     if (!currentUser) {
-      alert('Please log in to like products.');
+      alert('Please log in to like products.'); 
       return;
     }
-    const userLikesRef = doc(db, 'UserLikes', currentUser.uid);
+    const userLikesRef = doc(db, 'UserLikes', currentUser.uid); 
     if (liked) {
       await updateDoc(userLikesRef, {
-        likedProducts: arrayRemove(productId)
+        likedProducts: arrayRemove(productId) 
       });
-      setLiked(false);
+      setLiked(false); 
     } else {
       await setDoc(userLikesRef, {
-        likedProducts: arrayUnion(productId)
-      }, { merge: true });
-      setLiked(true);
+        likedProducts: arrayUnion(productId) 
+      }, { merge: true }); 
+      setLiked(true); 
     }
   };
 
+  // Rendering loading message if product details are not available
   if (!product) {
-    return <div className="product-details-loading">Loading...</div>;
+    return <div className="product-details-loading">Loading...</div>; 
   }
 
+  // JSX structure for displaying product details
   return (
     <div className="product-details-container">
       <div className="product-details-card">
         <div className="product-details-image-container">
-          <img src={product.image} alt={product.name} className="product-details-image" />
+          <img src={product.image} alt={product.name} className="product-details-image" /> 
         </div>
         <div className="product-details-info">
-          <h1 className="product-title">{product.name}</h1>
-          <p className="product-price">Price:€ {product.price}</p>
-          <p className="product-description">{product.description}</p>
+          <h1 className="product-title">{product.name}</h1> 
+          <p className="product-price">Price:€ {product.price}</p> 
+          <p className="product-description">{product.description}</p> 
           <div className="product-quantity-size">
             Quantity:
             <input
@@ -115,7 +123,7 @@ function ProductDetails() {
           </div>
           <button onClick={handleAddToCart} className="add-to-cart-btn">Add to Cart</button>
           <button onClick={toggleLike} className={`like-btn ${liked ? 'liked' : ''}`}>
-            {liked ? 'Unlike' : 'Like'}
+            {liked ? 'Unlike' : 'Like'} 
           </button>
         </div>
       </div>

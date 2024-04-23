@@ -6,6 +6,13 @@
   padding: 20px;
 }
 
+.likes-header {
+  text-align: center;
+  width: 100%; /* Ensure it spans the full width */
+  margin-top: 20px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
 .product {
   max-width: 300px;
   border: 1px solid #ddd;

@@ -9,18 +9,24 @@ import OrderHistory from '../components/OrderHistory';
 import ChangePassword from '../components/ChangePassword';
 import DeleteAccount from '../components/DeleteAccount';
 
-
 const Profile = () => {
+  // Authentication context
   const { currentUser } = useAuth();
+
+  // State for active section
   const [activeSection, setActiveSection] = useState('dashboard');
+
+  // Navigation hook
   const navigate = useNavigate();
 
+  // Effect to redirect if user is not logged in
   useEffect(() => {
     if (!currentUser) {
       navigate('/login');
     }
   }, [currentUser, navigate]);
 
+  // Function to render section based on active section state
   const renderSection = () => {
     switch (activeSection) {
       case 'dashboard':
@@ -40,6 +46,7 @@ const Profile = () => {
     }
   };
 
+  // Rendering profile page
   return (
     <div className="profile-container">
       <div className="profile-sidebar">
@@ -49,7 +56,6 @@ const Profile = () => {
         <button onClick={() => setActiveSection('orders')}>My Orders</button>
         <button onClick={() => setActiveSection('password')}>Change Password</button>
         <button onClick={() => setActiveSection('delete')}>Delete Account</button>
-
       </div>
       <div className="profile-content">
         {renderSection()}

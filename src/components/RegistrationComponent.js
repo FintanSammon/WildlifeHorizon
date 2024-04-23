@@ -22,35 +22,55 @@ export default function RegistrationComponent() {
   const handleRegistration = async (event) => {
     event.preventDefault();
     setErrorMessage('');
-  
+    
     if (!isPasswordValid(password)) {
       setErrorMessage('Password must be at least 8 characters long, include at least one uppercase letter, and one number.');
       return;
     }
-  
+    
     try {
+            // Creating user account with Firebase authentication
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
   
+            // Storing user data in Firestore
+
       await setDoc(doc(db, 'users', user.uid), {
         username: username,
         email: email,
       });
   
+            // Signing out after registration
+
       await signOut(auth);
   
+            // Navigating to login page
+
       navigate('/login');
     } catch (error) {
-      setErrorMessage('Registration failed. Please try again.');
+            // Handling registration errors
+
+      if (error.code === 'auth/email-already-in-use') {
+        setErrorMessage('This email is already in use. Please use a different email.');
+      } else if (error.code === 'auth/weak-password') {
+        setErrorMessage('Password is too weak. Ensure it meets the required criteria.');
+      } else {
+        setErrorMessage('Registration failed. Please try again.');
+      }
     }
   };
+  
   
   return (
     <div className="full-page-container"> 
       <div className="auth-container">
         <h2>Register</h2>
+        {/* Displaying error message if any */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {/* Registration form */}
         <form onSubmit={handleRegistration} className="auth-form">
+          {/* Input field for username */}
           <div className="auth-input-container">
             <label htmlFor="username">Username:</label>
             <input
@@ -61,6 +81,7 @@ export default function RegistrationComponent() {
               required
             />
           </div>
+          {/* Input field for email */}
           <div className="auth-input-container">
             <label htmlFor="email">Email:</label>
             <input
@@ -71,6 +92,7 @@ export default function RegistrationComponent() {
               required
             />
           </div>
+          {/* Input field for password */}
           <div className="auth-input-container password-input-container">
             <label htmlFor="password">Password:</label>
             <div className="password-field">
@@ -81,16 +103,19 @@ export default function RegistrationComponent() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              {/* Eye icon to toggle password visibility */}
               <EyeIcon onClick={() => setPasswordShown(!passwordShown)} className="password-toggle-icon" />
             </div>
           </div>
+          {/* Button to submit registration */}
           <button type="submit" className="register-button">Register</button>
+          {/* Link to login page */}
           <p className="auth-switch">
             Already registered?
             <button onClick={() => navigate('/login')} className="login-link">
             Log in
             </button>          
-            </p>
+          </p>
         </form>
       </div>
     </div>

@@ -6,11 +6,12 @@ import { db } from '../firebase/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import './CheckoutPage.css';
 
-
+// Load Stripe
 const stripePromise = loadStripe("pk_test_51OmDwQARlON62CXmxbObS09bJrOzU4WGMtwuFbjJizl8GhTmW4pgHrros9z3FecBbg66MOe7K5N0oOIbqlaSFFq800sxoEjHai");
 
+// CheckoutForm component
 const CheckoutForm = () => {
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth(); // Accessing currentUser from AuthContext
   const stripe = useStripe();
   const elements = useElements();
   const [customerInfo, setCustomerInfo] = useState({
@@ -23,6 +24,7 @@ const CheckoutForm = () => {
     zipCode: '',
   });
 
+  // Fetching user information from Firestore
   useEffect(() => {
     const fetchUserInfo = async () => {
       if (currentUser) {
@@ -56,11 +58,13 @@ const CheckoutForm = () => {
     fetchUserInfo();
   }, [currentUser]);
 
+  // Function to handle changes in input fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCustomerInfo(prev => ({ ...prev, [name]: value }));
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) return;
@@ -84,6 +88,7 @@ const CheckoutForm = () => {
     }
   };
 
+  // JSX structure for the form
   return (
     <form onSubmit={handleSubmit} className="checkout-form">
       <h2>Shipping Information</h2>
@@ -102,6 +107,7 @@ const CheckoutForm = () => {
   );
 };
 
+// CheckoutPage component
 const CheckoutPage = () => (
   <div className="checkout-page">
     <h1>Checkout</h1>
